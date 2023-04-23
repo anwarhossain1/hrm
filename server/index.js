@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
 const User = require('./modals/user.modal')
@@ -16,11 +17,15 @@ app.post('/api/login', async (req, res) => {
             name: req.body.name,
             pass: req.body.pass
         })
-        console.log('as', req.body, user)
         if (user) {
+            const token = jwt.sign({
+                name:user.name,
+                email:user.email
+            },'dbslab1234')
             res.json({
                 status: 200,
-                message: 'Login Successful'
+                message: 'Login Successful',
+                token:token
             })
         } else {
             res.json({
