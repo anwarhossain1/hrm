@@ -50,4 +50,18 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.post('/employee/register', async (req, res)=>{
+    try{
+        console.log('a', req)
+        // const user = await ad.create({
+        //     name: req.body.name,
+        //     email:req.body.email,
+        //     pass: req.body.pass
+        // })
+    }
+    catch (e){
+
+    }
+})
+
 module.exports = router

@@ -22,15 +22,4 @@ app.listen(1337, () => {
 app.use('/user', userAuthentication);
 app.use('/admin', adminAuthentication);
 
-app.post('/employee/register', async (req, res)=>{
-  try{
-      const user = await User.create({
-          name: req.body.name,
-          email:req.body.email,
-          pass: req.body.pass
-      })
-  }
-  catch (e){
 
-  }
-})
